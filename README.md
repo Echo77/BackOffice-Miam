@@ -1,5 +1,6 @@
-CakePHP
+Back Office du PFE Miam
 =======
+Utilise le framework cake php : 
 
 [![CakePHP](http://cakephp.org/img/cake-logo.png)](http://www.cakephp.org)
 
