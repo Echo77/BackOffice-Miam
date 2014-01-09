@@ -1,14 +1,14 @@
 <?php
-    class Menus extends AppModel {
+    class Ingredient extends AppModel {
     	 
     	 public $validate = array(
         'nom' => array(
             'rule' => 'notEmpty',
-            'message' => 'Un nom de menu est requis'
+            'message' => 'Un nom d ingredient est requis'
         ),
-        'prix' => array(
+        'pays' => array(
             'rule' => array('alphaNumeric', 'notEmpty'),
-            'message' => 'Un prix de menu est requis'
+            'message' => 'Un pays de menu est requis'
         ),
         'description' => array(
             'rule' => 'notEmpty'

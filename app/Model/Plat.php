@@ -1,11 +1,17 @@
 <?php
-    class Plats extends AppModel {
-    	
-    public $belongsTo = array(
-        'MesMenus' => array(
-            'className' => 'Menus',
-        )
-    );	 	
+    class Plat extends AppModel {
+    var $name = 'Plat';
+   
+    var $hasAndBelongsToMany = array(
+        'Ingredient' =>
+            array(
+                'className'              => 'Ingredient',
+                'joinTable'              => 'ingredients_plats',
+                'foreignKey'             => 'plat_id',
+                'associationForeignKey'  => 'ingredient_id',
+                'with' => 'IngredientsPlat'
+            )
+    );
     public $validate = array(
         'nom' => array(
             'rule' => 'notEmpty',

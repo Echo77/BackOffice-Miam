@@ -12,7 +12,7 @@
 		 */
 		 
 	 	$this->set('menus', $this->Menu->find('all'));
-		$this->set('plats', $this->Menu->Plats->find('all'));
+		//$this->set('plats', $this->Menu->Plats->find('all'));
 	 	debug($this->request->data);
         if ($this->request->is('post')) {
             $this->Menu->create();

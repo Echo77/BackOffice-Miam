@@ -13,5 +13,5 @@ echo $this->Form->input('plats', array(
   ));
 echo $this->Form->button('Sauvegarder', array('type' => 'submit', 'class' =>'btn btn-default'));
 echo $this->Form->end();
-print_r($plats); ?>
+//print_r($plats); ?>
 
