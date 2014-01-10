@@ -17,29 +17,42 @@
     <?php
     //print_r($plats);
     foreach($plats as $plats_key){
+    	$good = false;
+    	$id = 0;
     	foreach($plats_key as $key => $plat){
+    		
     	//print_r($key);
     
-  	if($key == "Plat") {  
-  	echo "<tr>";
-    echo "<td>".$plat["id"]."</td>";
-    echo "<td>".$plat["prix"]." €</td>";
-    echo "<td>".$plat["nom"]."</td>";
-    echo "<td>".$plat["calorie"]."</td>";
-    echo "<td>".$plat["description"]."</td>";
-    echo "<td>".$plat["categorie"]."</td>";
-	}
-    
-	if($key == "Ingredient") {
-	echo "<td>";
-		foreach($plat as $ingredient){
-			echo $ingredient["nom"]."<br>"; 
-		}
-    echo "</td>";
-    echo "<td>";
-	echo $this->Html->link('Modifier', array('controller' => 'plats', 'action' => 'edit'));
-	echo "</td></tr>"; 
-	}	
+		  	if($key == "Plat") {  
+		  		$id = $plat["id"];
+			  	echo "<tr>";
+			    echo "<td>".$plat["id"]."</td>";
+			    echo "<td>".$plat["prix"]." €</td>";
+			    echo "<td>".$plat["nom"]."</td>";
+			    echo "<td>".$plat["calorie"]."</td>";
+			    echo "<td>".$plat["description"]."</td>";
+			    echo "<td>".$plat["categorie"]."</td>";
+			}
+		    
+			if($key == "Ingredient") {
+				echo "<td>";
+				foreach($plat as $ingredient){
+					echo $ingredient["nom"]."<br>"; 
+				}
+				$good = true;
+			}
+		  	if($good) {  
+			  	echo "</td>";
+			    echo "<td>";
+				echo $this->Html->link('Modifier', array('controller' => 'plats', 'action' => 'edit', $id)); 
+				echo " / ";
+				echo $this->Html->link('Supprimer', array('controller' => 'plats', 'action' => 'delete', $id)); 
+				echo "</td></tr>"; 
+			}
+			//echo $this->$Html->link('Supprimer', "/plats/delete/{$plat["id"]}", null, 'Etes-vous sûr ?' );
+
+	
+	
 	
 	
 }}?>

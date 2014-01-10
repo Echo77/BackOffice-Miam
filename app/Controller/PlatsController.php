@@ -47,17 +47,18 @@
         }
     }
     public function edit($id = null) {
+        $this->set('ingredients', $this->Plat->Ingredient->find('all'));
         if (!$id) {
             throw new NotFoundException(__('Invalid plat'));
         }
 
-        $post = $this->Plat->findById($id);
-        if (!$post) {
+        $plat = $this->Plat->findById($id);
+        if (!$plat) {
             throw new NotFoundException(__('Invalid plat'));
         }
 
         if ($this->request->is(array('post', 'put'))) {
-            $this->Post->id = $id;
+            $this->Plat->id = $id;
             if ($this->Plat->save($this->request->data)) {
                 $this->Session->setFlash(__('Votre plat a été mis à jours.'));
                 return $this->redirect(array('action' => 'index'));
@@ -69,5 +70,11 @@
             $this->request->data = $plat;
         }
     }
- }
+
+    public function delete($id) {
+    $this->Plat->delete($id, true);
+    $this->Session->setFlash(__('Votre plat a été supprimé.'));
+    return $this->redirect(array('action' => 'index'));
+    }
+}
 ?>
