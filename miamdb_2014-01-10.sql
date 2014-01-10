@@ -5,9 +5,9 @@
 # http://www.sequelpro.com/
 # http://code.google.com/p/sequel-pro/
 #
-# Hôte: 172.31.45.113 (MySQL 5.5.33)
-# Base de données: miamdb
-# Temps de génération: 2014-01-06 14:31:02 +0000
+# H�te: localhost (MySQL 5.5.34)
+# Base de donn�es: miamdb
+# Temps de g�n�ration: 2014-01-10 12:59:11 +0000
 # ************************************************************
 
 
@@ -77,22 +77,65 @@ CREATE TABLE `HorairePlat` (
 
 
 
-# Affichage de la table Ingredient
+# Affichage de la table ingredients
 # ------------------------------------------------------------
 
-DROP TABLE IF EXISTS `Ingredient`;
+DROP TABLE IF EXISTS `ingredients`;
 
-CREATE TABLE `Ingredient` (
-  `id_Ingredient` int(10) unsigned NOT NULL AUTO_INCREMENT,
+CREATE TABLE `ingredients` (
+  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `nom` varchar(255) DEFAULT NULL,
   `pays` varchar(255) DEFAULT NULL,
   `region` varchar(255) DEFAULT NULL,
   `description` text,
   `photo` varchar(255) DEFAULT NULL,
   `regime` varchar(255) DEFAULT NULL,
-  PRIMARY KEY (`id_Ingredient`)
+  PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
+LOCK TABLES `ingredients` WRITE;
+/*!40000 ALTER TABLE `ingredients` DISABLE KEYS */;
+
+INSERT INTO `ingredients` (`id`, `nom`, `pays`, `region`, `description`, `photo`, `regime`)
+VALUES
+	(10,'Patate','France','Poitou-charente','La patate du Poitou hummm y\'a bon ! ',NULL,'gourmand'),
+	(11,'Carotte','France','Auvergne','Bark, vraiment que des mauvaises choses la bas',NULL,'Leger'),
+	(12,'piment d\'espelette','Mexique','prout','Ã§a pique !',NULL,'Leger'),
+	(13,'Chou','France','Limousin','fais pÃ©ter ! ',NULL,'Leger'),
+	(14,'Tomate','Espagne','Catalane','C\'est rouge',NULL,'Leger');
+
+/*!40000 ALTER TABLE `ingredients` ENABLE KEYS */;
+UNLOCK TABLES;
+
+
+# Affichage de la table ingredients_plats
+# ------------------------------------------------------------
+
+DROP TABLE IF EXISTS `ingredients_plats`;
+
+CREATE TABLE `ingredients_plats` (
+  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `plat_id` int(10) unsigned NOT NULL,
+  `ingredient_id` int(10) unsigned NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+LOCK TABLES `ingredients_plats` WRITE;
+/*!40000 ALTER TABLE `ingredients_plats` DISABLE KEYS */;
+
+INSERT INTO `ingredients_plats` (`id`, `plat_id`, `ingredient_id`)
+VALUES
+	(6,55,10),
+	(7,55,11),
+	(8,55,12),
+	(9,56,10),
+	(10,56,12),
+	(11,56,13),
+	(12,57,12),
+	(13,57,13);
+
+/*!40000 ALTER TABLE `ingredients_plats` ENABLE KEYS */;
+UNLOCK TABLES;
 
 
 # Affichage de la table MenuComposition
@@ -135,7 +178,8 @@ VALUES
 	(7,400,'deuxieme test','zlkejrkzejr'),
 	(8,2,'florian','ne vaut pas trÃ¨s cher'),
 	(9,1,'Florian en sauce','ce n\'est pas trÃ¨s bon '),
-	(15,0,'gdfg','fdgdfg');
+	(15,0,'gdfg','fdgdfg'),
+	(16,13,'Coucou menu','coucoumenunuuuu');
 
 /*!40000 ALTER TABLE `menus` ENABLE KEYS */;
 UNLOCK TABLES;
@@ -147,38 +191,41 @@ UNLOCK TABLES;
 DROP TABLE IF EXISTS `plats`;
 
 CREATE TABLE `plats` (
-  `id_Plat` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `prix` int(10) DEFAULT NULL,
   `calorie` int(10) DEFAULT NULL,
   `nom` varchar(255) DEFAULT NULL,
   `categorie` varchar(255) DEFAULT NULL,
   `photo` varchar(255) DEFAULT NULL,
   `description` text,
-  PRIMARY KEY (`id_Plat`)
+  PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 LOCK TABLES `plats` WRITE;
 /*!40000 ALTER TABLE `plats` DISABLE KEYS */;
 
-INSERT INTO `plats` (`id_Plat`, `prix`, `calorie`, `nom`, `categorie`, `photo`, `description`)
+INSERT INTO `plats` (`id`, `prix`, `calorie`, `nom`, `categorie`, `photo`, `description`)
 VALUES
-	(1,32,0,'test','dsfsdf',NULL,'test');
+	(5,23,0,'test','Entrees froides',NULL,'test'),
+	(6,34,0,'prout bis','Entrees froides',NULL,'prout'),
+	(7,0,34,'prout','Entrees chaude',NULL,'tprout'),
+	(8,0,0,'zer','Salade',NULL,'ztzet'),
+	(9,0,0,'coucou','Entrees froides',NULL,'coucou'),
+	(10,0,0,'zer','Beignets',NULL,'ezr'),
+	(11,0,0,'zer','Entrees chaude',NULL,'zer'),
+	(12,0,0,'azer','Assiette',NULL,'azer'),
+	(13,0,23,'licorne','Salade',NULL,'licorne'),
+	(14,34,34,'hello','Entrees chaude',NULL,'hello'),
+	(15,0,0,'coucou','Entrees chaude',NULL,'coucou'),
+	(16,0,34,'test','Beignets',NULL,'test'),
+	(17,34,23,'essai','Entrees froides',NULL,'essai'),
+	(18,0,0,'azer','Entrees froides',NULL,'zearzer'),
+	(19,0,0,'zer','Entrees froides',NULL,'zaerazer'),
+	(56,20000,10000,'Constance Royal','Entrees chaude',NULL,'C\'est si bon !'),
+	(57,1,3000,'Etienne en sauce','Beignets',NULL,'c\'est pas trÃ¨s bon ');
 
 /*!40000 ALTER TABLE `plats` ENABLE KEYS */;
 UNLOCK TABLES;
-
-
-# Affichage de la table Recette
-# ------------------------------------------------------------
-
-DROP TABLE IF EXISTS `Recette`;
-
-CREATE TABLE `Recette` (
-  `id_Plat` int(10) unsigned NOT NULL AUTO_INCREMENT,
-  `id_Ingredient` int(10) unsigned NOT NULL,
-  PRIMARY KEY (`id_Plat`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
 
 
 # Affichage de la table Saison
