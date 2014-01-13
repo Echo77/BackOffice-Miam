@@ -39,8 +39,8 @@
           <div class="nav-collapse collapse">
             <ul class="nav">
               <li><?php echo $this->Html->link('Ajouter un Menu', array('controller' => 'menus', 'action' => 'add')); ?></li>
-              <li><?php echo $this->Html->link('Ajouter un Ingrédient', array('controller' => 'ingredients', 'action' => '')); ?></li>
-              <li><?php echo $this->Html->link('Ajouter un Plat', array('controller' => 'plats', 'action' => '')); ?></li>
+              <li><?php echo $this->Html->link('Ajouter un Ingrédient', array('controller' => 'ingredients', 'action' => 'index')); ?></li>
+              <li><?php echo $this->Html->link('Ajouter un Plat', array('controller' => 'plats', 'action' => 'index')); ?></li>
               <li><a href="#about">About</a></li>
               <li><a href="#contact">Contact</a></li>
             </ul>

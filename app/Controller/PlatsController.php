@@ -59,11 +59,21 @@
 
         if ($this->request->is(array('post', 'put'))) {
             $this->Plat->id = $id;
+           // $this->Plat->delete($id, true);
             if ($this->Plat->save($this->request->data)) {
-                $this->Session->setFlash(__('Votre plat a été mis à jours.'));
-                return $this->redirect(array('action' => 'index'));
+                $this->Session->setFlash(__('Votre plat a été mis à jour.'));
+
+            $plat_id = $id;
+           // print_r($this->request->data['IngredientPlat']);
+            $this->Plat->IngredientsPlat->deleteAll(array('plat_id'=>$plat_id), true); 
+                foreach($this->request->data['IngredientPlat'] as $ingre){
+                 $data_id[]= array('ingredient_id'=> $ingre, 'plat_id'=>$plat_id);
+                }  
+                 $this->Plat->IngredientsPlat->saveMany($data_id);
+
+             return $this->redirect(array('action' => 'index'));
             }
-            $this->Session->setFlash(__('Error !.'));
+            $this->Session->setFlash(__('Error !.')); 
         }
 
         if (!$this->request->data) {
