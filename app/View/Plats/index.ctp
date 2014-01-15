@@ -6,8 +6,8 @@
         <th>Id</th>
         <th>Prix</th>
         <th>Nom</th>
-        <th>Description</th>
         <th>Calories</th>
+        <th>Description</th>
         <th>Categories</th>
         <th>Ingredient</th>
         <th>Modifier</th>

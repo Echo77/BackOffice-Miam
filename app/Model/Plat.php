@@ -31,6 +31,10 @@
         ),
         'description' => array(
             'rule' => 'notEmpty'
+        ),
+        'file' => array(
+            'rule' => 'notEmpty',
+            'message' => 'Joindre une photo'
         )
     );
 }

@@ -82,4 +82,17 @@ class DATABASE_CONFIG {
 		'prefix' => '',
 		//'encoding' => 'utf8',
 	);
+
+
+
+	public $ec2 = array(
+		'datasource' => 'Database/Mysql',
+		'persistent' => false,
+		'host' => 'localhost',
+		'login' => 'root',
+		'password' => 'miam2013',
+		'database' => 'miamdb',
+		'prefix' => '',
+		//'encoding' => 'utf8',
+	);
 }
