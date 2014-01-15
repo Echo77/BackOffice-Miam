@@ -8,6 +8,7 @@
         <th>Région</th>
         <th>Description</th>
         <th>Régime</th>
+        <th>Modifier</th>
     </tr>
     
 
@@ -22,6 +23,11 @@
         echo "<td>".$key2["region"]."</td>";
         echo "<td>".$key2["description"]."</td>";
         echo "<td>".$key2["regime"]."</td>";
+         echo "<td>";
+                echo $this->Html->link('Modifier', array('controller' => 'ingredients', 'action' => 'edit', $key2["id"])); 
+                echo " / ";
+                echo $this->Html->link('Supprimer', array('controller' => 'ingredients', 'action' => 'delete', $key2["id"])); 
+                echo "</td></tr>"; 
         echo "</tr>";
       }
     } 
