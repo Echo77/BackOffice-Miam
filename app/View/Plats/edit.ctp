@@ -1,7 +1,9 @@
 
 <div class="container">
-<h1>Ajouter un plat</h1>
+<h1>Modifier un plat</h1>
 
+<div class="row">
+	<div class="span6">
 <?php
 echo $this->Form->create('Plat');
 echo $this->Form->input('Plat.nom');
@@ -9,7 +11,7 @@ echo $this->Form->input('Plat.prix');
 echo $this->Form->input('Plat.description', array('rows' => '3'));
 
 //a quoi correspond la partie gauche de l'assignation ?
-$categorie = array('Salade' => 'Salade', 'Entrees froides' => 'Entrée froide', 'Entrees chaude' => 'Entrée Chaude', 'Beignets' => 'Beignet', 'Assiette' => 'Assiette', 'Boisson');
+$categorie = array('Salade' => 'Salade', 'Entree froide' => 'Entrée froide', 'Entree chaude' => 'Entrée Chaude', 'Beignet' => 'Beignet', 'Assiette' => 'Assiette', 'Boisson');
 
 echo $this->Form->input('categorie', array(
       'options' => $categorie,
@@ -17,6 +19,20 @@ echo $this->Form->input('categorie', array(
   ));
 echo $this->Form->input('calorie');
 ?>
+	</div>
+	<div class="span4">
+<?php
+	echo "<p>";
+	echo $this->Html->image($picture, array('max-width'=>'90%', 'max-height'=>'80%'));
+	echo "</p>";
+
+    echo $this->Form->input('Plat.photo', array(
+        'between' => '<br />',
+        'type' => 'file'
+    ));
+?>
+	</div>
+</div>
 <h2> Choix des ingrédients </h2>
 
 <?php

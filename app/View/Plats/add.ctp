@@ -25,8 +25,7 @@ echo $this->Form->input('calorie');
 
 <?php
 foreach($ingredients as $ingre => $key){
-	//print_r($ingre);
-  	//print_r($key);
+
   	echo $this->Form->input('IngredientPlat.'.$ingre.'', array('type' => 'checkbox', 'hiddenField' => false, 'label' =>$key["Ingredient"]["nom"], 'value' => $key["Ingredient"]["id"] ));
   	//echo $this->Form->checkbox(array('value' => $key2["id"]));
     //echo $key2["nom"];
