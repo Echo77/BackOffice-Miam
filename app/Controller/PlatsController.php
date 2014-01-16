@@ -102,5 +102,7 @@
     $this->Session->setFlash(__('Votre plat a été supprimé.'));
     return $this->redirect(array('action' => 'index'));
     }
+
+   
 }
 ?>

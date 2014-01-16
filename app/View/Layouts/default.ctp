@@ -32,7 +32,6 @@ $cakeDescription = __d('cake_dev', 'Miam !');
 
 		echo $this->Html->css('bootstrap.min');
 		echo $this->Html->css('bootstrap-responsive.min');
-
 		echo $this->fetch('meta');
 		echo $this->fetch('css');
 		echo $this->fetch('script');
