@@ -9,8 +9,8 @@
         <th>Calories</th>
         <th>Description</th>
         <th>Categories</th>
-        <th>Ingredient</th>
         <th>Image</th>
+        <th>Ingredient</th>
         <th>Modifier</th>
     </tr>
     </thead>
@@ -21,14 +21,13 @@
     	$good = false;
     	$id = 0;
     	foreach($plats_key as $key => $plat){
-    		
-    
 		  	if($key == "Plat") {  
 		  		$id = $plat["id"];
 			  	echo "<tr>";
 			    echo "<td>".$plat["id"]."</td>";
-			    echo "<td>".$plat["prix"]." €</td>";
 			    echo "<td>".$plat["nom"]."</td>";
+			    echo '<td style="width:150px">'.$this->Html->image($plat["photo"], array('alt' => 'CakePHP'))."</td>";
+			    echo "<td>".$plat["prix"]." €</td>";
 			    echo "<td>".$plat["calorie"]."</td>";
 			    echo "<td>".$plat["description"]."</td>";
 			    echo "<td>".$plat["categorie"]."</td>";
@@ -42,10 +41,7 @@
 				$good = true;
 			}
 		  	if($good) {  
-			  	echo "</td>";
-
-			  	echo "<td>".$this->Html->image($picture, array('max-height'=>'80%'))."</td>";
-			    
+			  	echo "</td>";			    
 			    echo "<td>";
 				echo $this->Html->link('Modifier', array('controller' => 'plats', 'action' => 'edit', $id)); 
 				echo " / ";
