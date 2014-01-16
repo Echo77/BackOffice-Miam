@@ -10,18 +10,18 @@
         <th>Description</th>
         <th>Categories</th>
         <th>Ingredient</th>
+        <th>Image</th>
         <th>Modifier</th>
     </tr>
     </thead>
     <tbody>
     <?php
-    //print_r($plats);
+
     foreach($plats as $plats_key){
     	$good = false;
     	$id = 0;
     	foreach($plats_key as $key => $plat){
     		
-    	//print_r($key);
     
 		  	if($key == "Plat") {  
 		  		$id = $plat["id"];
@@ -43,6 +43,9 @@
 			}
 		  	if($good) {  
 			  	echo "</td>";
+
+			  	echo "<td>".$this->Html->image($picture, array('max-height'=>'80%'))."</td>";
+			    
 			    echo "<td>";
 				echo $this->Html->link('Modifier', array('controller' => 'plats', 'action' => 'edit', $id)); 
 				echo " / ";

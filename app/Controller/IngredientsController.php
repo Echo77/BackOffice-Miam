@@ -16,7 +16,6 @@
             $response = curl_exec($handle);                 
             $responseDecoded = json_decode($response, true);
             curl_close($handle);
-
             return $responseDecoded['data']['translations'][0]['translatedText'];
     }
 	 public function add() {
