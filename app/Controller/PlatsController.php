@@ -13,17 +13,6 @@
         $ex = explode('.', $photo['name']);
         $ext = $ex[count($ex)-1];
 
-        $images = array('gif', 'jpg', 'jpeg', 'png', 'tif', 'tiff');
-        if(in_array($ext, $images)) {
-            $name = 'photos_plats/plat_'.$id_last_plat['Plat']['id'].'.'.$ex[count($ex)-1];
-            move_uploaded_file($photo['tmp_name'],'img/'.$name);
-        } else {
-            $name = false;
-        }
-
-        $name = 'photos_plats/plat_'.$id_last_plat['Plat']['id'].'.'.$ex[count($ex)-1];
-        move_uploaded_file($photo['tmp_name'],'img/'.$name);
-
         $name = 'photos_plats/plat_'.$id_last_plat['Plat']['id'].'.'.$ex[count($ex)-1];
         move_uploaded_file($photo['tmp_name'],'img/'.$name);
 
@@ -48,6 +37,7 @@
                     $result[$key] = $value;
                 }
             }
+
                 $this->Plat->create();
                 if(isset($this->request->data['IngredientPlat'])) // Verifie s'il y a des ingredients
                 {
@@ -131,14 +121,18 @@
         if ($this->request->is(array('post', 'put'))) {
             $this->Plat->id = $id;
 
+
           if(isset($this->request->data['IngredientPlat']))
           {
             if ($this->Plat->save($this->request->data)) 
             {
+
                 $this->Session->setFlash(__('Votre plat a été mis à jour.'));
                 $plat_id = $id;
                 $this->Plat->IngredientsPlat->deleteAll(array('plat_id'=>$plat_id), true); 
 
+            $plat_id = $id;
+            $this->Plat->IngredientsPlat->deleteAll(array('plat_id'=>$plat_id), true); 
                 foreach($this->request->data['IngredientPlat'] as $ingre){
                  $data_id[]= array('ingredient_id'=> $ingre, 'plat_id'=>$plat_id);
                 }  

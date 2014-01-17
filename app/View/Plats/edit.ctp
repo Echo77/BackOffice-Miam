@@ -37,6 +37,18 @@ echo $this->Form->input('calorie');
 	echo "<p>";
 	echo $this->Html->image($picture, array('max-width'=>'90%', 'max-height'=>'80%'));
 	echo "</p>";
+<<<<<<< HEAD
+=======
+
+    echo $this->Form->input('Plat.photo', array(
+        'between' => '<br />',
+        'type' => 'file'
+    ));
+?>
+	</div>
+</div>
+<h2> Choix des ingrédients </h2>
+>>>>>>> cabf81f4dd385a7489dd7d0ac0f493e2931c9ffe
 
     echo $this->Form->input('Plat.photo', array(
         'between' => '<br />',
