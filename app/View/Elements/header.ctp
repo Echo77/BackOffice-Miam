@@ -38,11 +38,9 @@
           <a class="brand" href="/cakephp">Project name</a>
           <div class="nav-collapse collapse">
             <ul class="nav">
-              <li><?php echo $this->Html->link('Ajouter un Menu', array('controller' => 'menus', 'action' => 'add')); ?></li>
-              <li><?php echo $this->Html->link('Ajouter un Ingrédient', array('controller' => 'ingredients', 'action' => 'index')); ?></li>
-              <li><?php echo $this->Html->link('Ajouter un Plat', array('controller' => 'plats', 'action' => 'index')); ?></li>
-              <li><a href="#about">About</a></li>
-              <li><a href="#contact">Contact</a></li>
+              <li><?php echo $this->Html->link('Menu', array('controller' => 'menus', 'action' => 'index')); ?></li>
+              <li><?php echo $this->Html->link('Ingrédient', array('controller' => 'ingredients', 'action' => 'index')); ?></li>
+              <li><?php echo $this->Html->link('Plat', array('controller' => 'plats', 'action' => 'index')); ?></li>
             </ul>
           </div><!--/.nav-collapse -->
         </div>

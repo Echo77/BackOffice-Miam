@@ -32,9 +32,13 @@
         'description' => array(
             'rule' => 'notEmpty'
         ),
-        'file' => array(
-            'rule' => 'notEmpty',
-            'message' => 'Joindre une photo'
+        'photo' => array(
+            'rule' => array(
+                'extension',
+                array('gif', 'jpeg', 'png', 'jpg')
+            ),
+            'message' => 'Joindre une photo',
+            'allowEmpty' => true
         )
     );
 }

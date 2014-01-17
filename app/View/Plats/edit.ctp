@@ -1,7 +1,9 @@
 
 <div class="container">
-<h1>Ajouter un plat</h1>
+<h1>Modifier un plat</h1>
 
+<div class="row">
+	<div class="span6">
 <?php
 echo $this->Form->create('Plat');
 echo $this->Form->input('Plat.nom');
@@ -9,16 +11,45 @@ echo $this->Form->input('Plat.prix');
 echo $this->Form->input('Plat.description', array('rows' => '3'));
 
 //a quoi correspond la partie gauche de l'assignation ?
-$categorie = array('Salade' => 'Salade', 'Entrees froides' => 'Entrée froide', 'Entrees chaude' => 'Entrée Chaude', 'Beignets' => 'Beignet', 'Assiette' => 'Assiette', 'Boisson');
+$categorie = array('Salade' => 'Salade', 'Entree froide' => 'Entrée froide', 'Entree chaude' => 'Entrée Chaude', 'Beignet' => 'Beignet', 'Assiette' => 'Assiette', 'Boisson');
 
 echo $this->Form->input('categorie', array(
       'options' => $categorie,
       'empty' => '(choisissez)'
   ));
+$saison = array('Ete' => 'Été', 'Automne' => 'Automne', 'Hivers' => 'Hivers', 'Printemps' => 'Printemps');
+
+$horaire = array('Midi' => 'Midi', 'Soirée' => 'Soirée');
+
+echo $this->Form->input('saison', array(
+      'options' => $saison,
+      'empty' => '(choisissez)'
+  ));
+echo $this->Form->input('horaire', array(
+      'options' => $horaire,
+      'empty' => '(choisissez)'
+  ));
 echo $this->Form->input('calorie');
 ?>
-<h2> Choix des ingrédients </h2>
+	</div>
+	<div class="span4">
+<?php
+	echo "<p>";
+	echo $this->Html->image($picture, array('max-width'=>'90%', 'max-height'=>'80%'));
+	echo "</p>";
 
+    echo $this->Form->input('Plat.photo', array(
+        'between' => '<br />',
+        'type' => 'file'
+    ));
+?>
+	</div>
+</div>
+<h2> Choix des ingrédients </h2>
+<div id="ajout_ingredient">
+	<?php //echo $this->element('add_ingredient', array(), array('cache' => true)); ?>
+	<?php echo $this->Html->link('Ajouter un ingredient', '#', array('onclick'=>"var openWin = window.open('".$this->Html->url(array('controller' => 'ingredients', 'action' => 'add_popup'))."', '_blank', 'toolbar=0,scrollbars=1,location=0,status=1,menubar=0,resizable=1,width=500,height=500');  return false;")); ?>
+</div>
 <?php
 foreach($ingredients as $ingre => $key) {
   	echo $this->Form->input('IngredientPlat.'.$ingre.'', array('type' => 'checkbox', 'hiddenField' => false, 'label' =>$key["Ingredient"]["nom"], 'value' => $key["Ingredient"]["id"] ));

@@ -9,29 +9,32 @@
         <th>Calories</th>
         <th>Description</th>
         <th>Categories</th>
+        <th>Horaire</th>
+        <th>Saison</th>
+        <th>Image</th>
         <th>Ingredient</th>
         <th>Modifier</th>
     </tr>
     </thead>
     <tbody>
     <?php
-    //print_r($plats);
+
     foreach($plats as $plats_key){
     	$good = false;
     	$id = 0;
     	foreach($plats_key as $key => $plat){
-    		
-    	//print_r($key);
-    
 		  	if($key == "Plat") {  
 		  		$id = $plat["id"];
 			  	echo "<tr>";
 			    echo "<td>".$plat["id"]."</td>";
-			    echo "<td>".$plat["prix"]." €</td>";
 			    echo "<td>".$plat["nom"]."</td>";
+			    echo '<td>'.$this->Html->image($plat["photo"], array('alt' => 'CakePHP', 'width'=>'150px'))."</td>";
+			    echo "<td>".$plat["prix"]." €</td>";
 			    echo "<td>".$plat["calorie"]."</td>";
 			    echo "<td>".$plat["description"]."</td>";
 			    echo "<td>".$plat["categorie"]."</td>";
+			    echo "<td>".$plat["horaire"]."</td>";
+			    echo "<td>".$plat["saison"]."</td>";
 			}
 		    
 			if($key == "Ingredient") {
@@ -42,7 +45,7 @@
 				$good = true;
 			}
 		  	if($good) {  
-			  	echo "</td>";
+			  	echo "</td>";			    
 			    echo "<td>";
 				echo $this->Html->link('Modifier', array('controller' => 'plats', 'action' => 'edit', $id)); 
 				echo " / ";

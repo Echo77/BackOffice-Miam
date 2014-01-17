@@ -16,7 +16,6 @@
             $response = curl_exec($handle);                 
             $responseDecoded = json_decode($response, true);
             curl_close($handle);
-
             return $responseDecoded['data']['translations'][0]['translatedText'];
     }
 	 public function add() {
@@ -99,6 +98,15 @@
         $this->Ingredient->id = $id;
         if ($this->Ingredient->save($this->request->data)) {
             $this->Session->setFlash(__('Votre ingredient a été mis a jour.'));
+            //return $this->redirect(array('action' => 'index'));
+            $nom = $this->request->data['Ingredient']['nom'];
+            $to_en = $this->translate($nom, "en");
+            $to_es = $this->translate($nom, "es");
+            $to_de = $this->translate($nom, "de");
+            $to_zh = $this->translate($nom, "zh-CN");
+            $data_translate[] = array('nom_en' => $to_en, 'nom_es' => $to_es, 'nom_zh' => $to_zh, 'nom_de' => $to_de, 'id'=> $id);
+            $this->Ingredient->savemany($data_translate);
+            $this->Session->setFlash(__('Impossible d\'ajouté un ingredient.'));
             return $this->redirect(array('action' => 'index'));
         }
         $this->Session->setFlash(__('Error.'));

@@ -15,20 +15,8 @@ echo $this->Form->input('Plat.photo', array(
 
 $categorie = array('Salade' => 'Salade', 'Entree froide' => 'Entrée froide', 'Entree chaude' => 'Entrée Chaude', 'Beignet' => 'Beignet', 'Assiette' => 'Assiette', 'Boisson' => 'Boisson');
 
-$saison = array('Ete' => 'Été', 'Automne' => 'Automne', 'Hivers' => 'Hivers', 'Printemps' => 'Printemps');
-
-$horaire = array('Midi' => 'Midi', 'Soirée' => 'Soirée');
-
 echo $this->Form->input('categorie', array(
       'options' => $categorie,
-      'empty' => '(choisissez)'
-  ));
-echo $this->Form->input('saison', array(
-      'options' => $saison,
-      'empty' => '(choisissez)'
-  ));
-echo $this->Form->input('horaire', array(
-      'options' => $horaire,
       'empty' => '(choisissez)'
   ));
 echo $this->Form->input('calorie');
@@ -40,11 +28,16 @@ echo $this->Form->input('calorie');
 </div>
 <?php
 foreach($ingredients as $ingre => $key){
-
+	//print_r($ingre);
+  	//print_r($key);
   	echo $this->Form->input('IngredientPlat.'.$ingre.'', array('type' => 'checkbox', 'hiddenField' => false, 'label' =>$key["Ingredient"]["nom"], 'value' => $key["Ingredient"]["id"] ));
   	//echo $this->Form->checkbox(array('value' => $key2["id"]));
     //echo $key2["nom"];
 }
+?>
+<div id="close_popup">
+<?php
 echo $this->Form->button('Sauvegarder', array('type' => 'submit', 'class' =>'btn btn-default'));
 echo $this->Form->end();
 //print_r($plats); ?>
+</div>
