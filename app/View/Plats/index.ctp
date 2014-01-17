@@ -9,6 +9,8 @@
         <th>Calories</th>
         <th>Description</th>
         <th>Categories</th>
+        <th>Horaire</th>
+        <th>Saison</th>
         <th>Image</th>
         <th>Ingredient</th>
         <th>Modifier</th>
@@ -26,11 +28,13 @@
 			  	echo "<tr>";
 			    echo "<td>".$plat["id"]."</td>";
 			    echo "<td>".$plat["nom"]."</td>";
-			    echo '<td style="width:150px">'.$this->Html->image($plat["photo"], array('alt' => 'CakePHP'))."</td>";
+			    echo '<td>'.$this->Html->image($plat["photo"], array('alt' => 'CakePHP', 'width'=>'150px'))."</td>";
 			    echo "<td>".$plat["prix"]." €</td>";
 			    echo "<td>".$plat["calorie"]."</td>";
 			    echo "<td>".$plat["description"]."</td>";
 			    echo "<td>".$plat["categorie"]."</td>";
+			    echo "<td>".$plat["horaire"]."</td>";
+			    echo "<td>".$plat["saison"]."</td>";
 			}
 		    
 			if($key == "Ingredient") {

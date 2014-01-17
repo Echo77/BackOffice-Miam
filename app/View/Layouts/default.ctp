@@ -24,7 +24,7 @@ $cakeDescription = __d('cake_dev', 'Miam !');
 <head>
 	<?php echo $this->Html->charset(); ?>
 	<title>
-		<?php echo $cakeDescription ?>
+		<?php //echo $cakeDescription ?>
 		<?php // echo $title_for_layout; ?>
 	</title>
 	<?php
@@ -44,7 +44,7 @@ $cakeDescription = __d('cake_dev', 'Miam !');
 		</div>
 		<div id="content">
 
-			<?php echo $this->Session->flash(); ?>
+			<?php //echo $this->Session->flash(); ?>
 
 			<?php echo $this->fetch('content'); ?>
 		</div>
@@ -52,6 +52,6 @@ $cakeDescription = __d('cake_dev', 'Miam !');
 			<?php echo $this->element('footer'); ?>
 		</div>
 	</div>
-	<?php echo $this->element('sql_dump'); ?>
+	<!--<?php// echo $this->element('sql_dump'); ?> -->
 </body>
 </html>
