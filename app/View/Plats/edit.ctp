@@ -5,12 +5,11 @@
 <div class="row">
 	<div class="span6">
 <?php
-echo $this->Form->create('Plat');
+echo $this->Form->create('Plat', array('enctype' => 'multipart/form-data'));
 echo $this->Form->input('Plat.nom');
 echo $this->Form->input('Plat.prix');
 echo $this->Form->input('Plat.description', array('rows' => '3'));
 
-//a quoi correspond la partie gauche de l'assignation ?
 $categorie = array('Salade' => 'Salade', 'Entree froide' => 'Entrée froide', 'Entree chaude' => 'Entrée Chaude', 'Beignet' => 'Beignet', 'Assiette' => 'Assiette', 'Boisson');
 
 echo $this->Form->input('categorie', array(
@@ -26,10 +25,12 @@ echo $this->Form->input('calorie');
 	echo $this->Html->image($picture, array('max-width'=>'90%', 'max-height'=>'80%'));
 	echo "</p>";
 
-    echo $this->Form->input('Plat.photo', array(
-        'between' => '<br />',
-        'type' => 'file'
-    ));
+
+echo $this->Form->input('Plat.photo', array(
+    'between' => '<br />',
+    'type' => 'file'
+));
+
 ?>
 	</div>
 </div>

@@ -41,6 +41,7 @@
               <li><?php echo $this->Html->link('Ajouter un Menu', array('controller' => 'menus', 'action' => 'add')); ?></li>
               <li><?php echo $this->Html->link('Ajouter un Ingrédient', array('controller' => 'ingredients', 'action' => 'index')); ?></li>
               <li><?php echo $this->Html->link('Ajouter un Plat', array('controller' => 'plats', 'action' => 'index')); ?></li>
+              <li><?php echo $this->Html->link('Commentaires', array('controller' => 'commentaires', 'action' => 'index')); ?></li>
               <li><a href="#about">About</a></li>
               <li><a href="#contact">Contact</a></li>
             </ul>
