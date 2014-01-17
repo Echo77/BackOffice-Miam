@@ -43,7 +43,6 @@ echo $this->Form->input('calorie');
 ?>
 	</div>
 </div>
-<h2> Choix des ingrédients </h2>
 
 <h2> Choix des ingrédients </h2>
 <div id="ajout_ingredient">
