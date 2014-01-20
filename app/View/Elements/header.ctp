@@ -42,6 +42,9 @@
               <li><?php echo $this->Html->link('Ingrédient', array('controller' => 'ingredients', 'action' => 'index')); ?></li>
               <li><?php echo $this->Html->link('Plat', array('controller' => 'plats', 'action' => 'index')); ?></li>
               <li><?php echo $this->Html->link('Commentaires', array('controller' => 'commentaires', 'action' => 'index')); ?></li>
+              <?php if(AuthComponent::user()):?> 
+              <li><?php echo $this->Html->link('Se deconnecter', array('controller' => 'users', 'action' => 'logout')); ?></li>
+            <?php endif; ?>
             </ul>
           </div><!--/.nav-collapse -->
         </div>
