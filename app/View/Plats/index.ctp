@@ -1,6 +1,5 @@
 <div class="container">
 <h1>Plats</h1>
-<table class="table table-striped">
 	<?php echo $this->Html->link(
 	    'Ajouter un Plat',
 	    array('controller' => 'plats', 'action' => 'add')
@@ -9,7 +8,6 @@
     <br>
 
 <table class="table table-striped">
-	<thead>
     <tr>
         <th>Id</th>
         <th>
@@ -47,7 +45,7 @@
         <th>Ingredient</th>
         <th>Modifier</th>
     </tr>
-    </thead>
+
     <tbody>
     <?php
 
@@ -83,14 +81,12 @@
 				echo " / ";
 				echo $this->Html->link('Supprimer', array('controller' => 'plats', 'action' => 'delete', $id)); 
 				echo "</td></tr>"; 
+				$good = false;
 			}
-			//echo $this->$Html->link('Supprimer', "/plats/delete/{$plat["id"]}", null, 'Etes-vous sûr ?' );
-
-	
-	
-	
-	
-}}?>
+			//echo $this->$Html->link('Supprimer', "/plats/delete/{$plat["id"]}", null, 'Etes-vous sûr ?' );	
+		}
+	}
+?>
 </tbody>
 </table>
 
