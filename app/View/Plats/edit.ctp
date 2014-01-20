@@ -28,7 +28,12 @@ echo $this->Form->input('horaire', array(
       'options' => $horaire,
       'empty' => '(choisissez)'
   ));
-echo $this->Form->input('calorie');
+//echo $this->Form->input('calorie');
+$regime = array('Leger' => 'Léger', 'Moyen' => 'Moyen', 'Gourmand' => 'Gourmand');
+echo $this->Form->input('regime', array(
+      'options' => $regime,
+      'empty' => '(choisissez)'
+));
 ?>
 	</div>
 	<div class="span4">

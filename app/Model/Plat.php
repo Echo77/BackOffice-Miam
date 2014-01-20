@@ -15,19 +15,19 @@
     public $validate = array(
         'nom' => array(
             'rule' => 'notEmpty',
-            'message' => 'Un nom de menu est requis'
+            'message' => 'Le nom du plat est requis'
         ),
         'prix' => array(
             'rule' => 'notEmpty',
-            'message' => 'Un prix de menu est requis'
+            'message' => 'Le prix du plat est requis'
         ),
-        'calorie' => array(
+        'regime' => array(
             'rule' => 'notEmpty',
-            'message' => 'Un prix de menu est requis'
+            'message' => 'Le type de régime du plat est requis'
         ),
         'categorie' => array(
             'rule' => 'notEmpty',
-            'message' => 'Un prix de menu est requis'
+            'message' => 'La catégorie du plat est requise'
         ),
         'description' => array(
             'rule' => 'notEmpty'

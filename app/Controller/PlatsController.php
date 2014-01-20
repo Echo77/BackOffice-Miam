@@ -3,7 +3,19 @@
     public $helpers = array('Html', 'Form');
 
     public function index() {
-        $this->set('plats', $this->Plat->find('all'));
+        $params = array('order' => 'Plat.nom');
+        if(isset($_GET['ordernom']) && $_GET['ordernom'] == 'DESC') {
+            $params = array('ordernom' => 'Plat.nom DESC');
+        }
+        else {
+            $params = array('order' => 'Plat.nom', 'order' => 'Plat.nom');
+            if(isset($_GET['ordercat']) && $_GET['ordercat'] == 'DESC')
+                $params = array('order' => 'Plat.categorie DESC');
+            else
+                $params = array('order' => 'Plat.categorie');
+        }
+        $this->set('plats', $this->Plat->find('all', $params));
+
         $this->set('ingredients', $this->Plat->Ingredient->find('all'));
     }
 
@@ -18,6 +30,18 @@
 
         return $name;
     }
+
+    public function translate($text, $language){
+        $apiKey = 'AIzaSyBwcVX5llQAf3tkZllBoYK-jZ26ZI4y9bU';
+        $url = 'https://www.googleapis.com/language/translate/v2?key=' . $apiKey . '&q=' . rawurlencode($text) . '&source=fr&target='.$language.'';
+        $handle = curl_init($url);
+        curl_setopt($handle, CURLOPT_RETURNTRANSFER, true);
+        $response = curl_exec($handle);                 
+        $responseDecoded = json_decode($response, true);
+        curl_close($handle);
+        return $responseDecoded['data']['translations'][0]['translatedText'];
+    }
+
 	public function add() {
 		 
 	 	$this->set('plats', $this->Plat->find('all'));
@@ -51,6 +75,15 @@
                         $data_id[]= array('ingredient_id'=> $ingre, 'plat_id'=>$id_plat['Plat']['id']);                    
                     }
                     $this->Plat->IngredientsPlat->saveMany($data_id);
+
+                    $nom = $this->request->data['Plat']['nom'];
+                    $to_en = $this->translate($nom, "en");
+                    $to_es = $this->translate($nom, "es");
+                    $to_de = $this->translate($nom, "de");
+                    $to_zh = $this->translate($nom, "zh-CN");
+                    $data_translate[] = array('nom_en' => $to_en, 'nom_es' => $to_es, 'nom_zh' => $to_zh, 'nom_de' => $to_de, 'id'=> $id_plat['Plat']['id']);
+                    $this->Plat->savemany($data_translate);
+
                    return $this->redirect(array('action' => 'index'));  
                 } 
                 $this->Session->setFlash(__('Impossible d\'ajouté un plat.')); 
@@ -92,6 +125,15 @@
                         $data_id[]= array('ingredient_id'=> $ingre, 'plat_id'=>$id_plat['Plat']['id']);                    
                     }
                     $this->Plat->IngredientsPlat->saveMany($data_id);
+
+                    $nom = $this->request->data['Plat']['nom'];
+                    $to_en = $this->translate($nom, "en");
+                    $to_es = $this->translate($nom, "es");
+                    $to_de = $this->translate($nom, "de");
+                    $to_zh = $this->translate($nom, "zh-CN");
+                    $data_translate[] = array('nom_en' => $to_en, 'nom_es' => $to_es, 'nom_zh' => $to_zh, 'nom_de' => $to_de, 'id'=> $id_plat['Plat']['id']);
+                    $this->Plat->savemany($data_translate);
+
                    return $this->redirect(array('action' => 'index'));  
                 } 
                 $this->Session->setFlash(__('Impossible d\'ajouté un plat.')); 
@@ -145,14 +187,21 @@
                     $this->Session->setFlash(__('Votre plat a été mis à jour.'));
                     $plat_id = $id;
                     $this->Plat->IngredientsPlat->deleteAll(array('plat_id' => $plat_id), true); 
-
-                    $plat_id = $id;
                 
                     $this->Plat->IngredientsPlat->deleteAll(array('plat_id' => $plat_id), true); 
                     foreach($result['IngredientPlat'] as $ingre) {
                         $data_id[]= array('ingredient_id' => $ingre, 'plat_id' => $plat_id);
                     }  
                     $this->Plat->IngredientsPlat->saveMany($data_id);
+
+                    $nom = $this->request->data['Plat']['nom'];
+                    $to_en = $this->translate($nom, "en");
+                    $to_es = $this->translate($nom, "es");
+                    $to_de = $this->translate($nom, "de");
+                    $to_zh = $this->translate($nom, "zh-CN");
+                    $data_translate[] = array('nom_en' => $to_en, 'nom_es' => $to_es, 'nom_zh' => $to_zh, 'nom_de' => $to_de, 'id'=> $plat_id);
+                    $this->Plat->savemany($data_translate);
+
                     return $this->redirect(array('action' => 'index'));
                     $this->Session->setFlash(__('Error !'));
                 }

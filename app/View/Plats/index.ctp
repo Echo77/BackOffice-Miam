@@ -1,23 +1,49 @@
 <div class="container">
 <h1>Plats</h1>
-<table class="table table-striped">
 
 	<?php echo $this->Html->link(
 	    'Ajouter un Plat',
 	    array('controller' => 'plats', 'action' => 'add')
 	); ?>
+    <br>
+    <br>
+
+<table class="table table-striped">
 	<thead>
     <tr>
         <th>Id</th>
-        <th>Nom</th>
+        <th>
+        <?php 
+            if(isset($_GET['ordernom']) && $_GET['ordernom'] == 'DESC')
+                echo $this->Html->link('Nom', '/plats', array(
+                    "controller" => "plats",
+                    "action" => "index"));
+            else 
+                echo $this->Html->link('Nom', '/plats?ordernom=DESC', array(
+                    "controller" => "plats",
+                    "action" => "index",
+                    "?" => array("order" => "DESC")));
+        ?>
+        </th>
         <th>Image</th>
         <th>Prix</th>
-        <th>Calories</th>
+        <th>Régime</th>
         <th>Description</th>
-        <th>Categories</th>
+        <th>
+        <?php 
+            if(isset($_GET['ordercat']) && $_GET['ordercat'] == 'DESC')
+                echo $this->Html->link('Catégorie', '/plats', array(
+                    "controller" => "plats",
+                    "action" => "index"));
+            else 
+                echo $this->Html->link('Catégorie', '/plats?ordercat=DESC', array(
+                    "controller" => "plats",
+                    "action" => "index",
+                    "?" => array("order" => "DESC")));
+        ?>
+        </th>
         <th>Horaire</th>
         <th>Saison</th>
-        
         <th>Ingredient</th>
         <th>Modifier</th>
     </tr>
@@ -36,7 +62,7 @@
 			    echo "<td>".$plat["nom"]."</td>";
 			    echo '<td>'.$this->Html->image($plat["photo"], array('alt' => 'CakePHP', 'width'=>'150px'))."</td>";
 			    echo "<td>".$plat["prix"]." €</td>";
-			    echo "<td>".$plat["calorie"]."</td>";
+			    echo "<td>".$plat["regime"]."</td>";
 			    echo "<td>".$plat["description"]."</td>";
 			    echo "<td>".$plat["categorie"]."</td>";
 			    echo "<td>".$plat["horaire"]."</td>";
@@ -78,4 +104,7 @@
     'Ajouter un Plat',
     array('controller' => 'plats', 'action' => 'add')
 ); ?>	
+<br>
+<br>
+<br>
 </div>

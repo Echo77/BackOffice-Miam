@@ -15,9 +15,9 @@ echo $this->Form->input('Plat.photo', array(
 
 $categorie = array('Salade' => 'Salade', 'Entree froide' => 'Entrée froide', 'Entree chaude' => 'Entrée Chaude', 'Beignet' => 'Beignet', 'Assiette' => 'Assiette', 'Boisson' => 'Boisson');
 
-$saison = array('Ete' => 'Été', 'Automne' => 'Automne', 'Hivers' => 'Hivers', 'Printemps' => 'Printemps');
+$saison = array('Ete' => 'Été', 'Automne' => 'Automne', 'Hiver' => 'Hiver', 'Printemps' => 'Printemps');
 
-$horaire = array('Midi' => 'Midi', 'Soirée' => 'Soirée');
+$horaire = array('Midi' => 'Midi', 'Soiree' => 'Soirée');
 
 echo $this->Form->input('categorie', array(
       'options' => $categorie,
@@ -31,7 +31,13 @@ echo $this->Form->input('horaire', array(
       'options' => $horaire,
       'empty' => '(choisissez)'
   ));
-echo $this->Form->input('calorie');
+//echo $this->Form->input('calorie');
+
+$regime = array('Leger' => 'Léger', 'Moyen' => 'Moyen', 'Gourmand' => 'Gourmand');
+echo $this->Form->input('regime', array(
+      'options' => $regime,
+      'empty' => '(choisissez)'
+));
 ?>
 <h2> Choix des ingrédients </h2>
 <div id="ajout_ingredient">

@@ -9,12 +9,13 @@
 	echo $this->Form->input('region');
 	echo $this->Form->input('description', array('rows' => '3'));
 
+/* supprimé pour le moment
 	$regime = array('Leger' => 'Léger', 'Moyen' => 'Moyen', 'Gourmand' => 'Gourmand');
 
 	echo $this->Form->input('regime', array(
 	      'options' => $regime,
 	      'empty' => '(choisissez)'
-	  ));
+	  )); */
 
 	echo $this->Form->button('Sauvegarder', array('type' => 'submit', 'class' =>'btn btn-default'));
 	echo $this->Form->end();

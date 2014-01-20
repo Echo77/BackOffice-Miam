@@ -19,7 +19,12 @@ echo $this->Form->input('categorie', array(
       'options' => $categorie,
       'empty' => '(choisissez)'
   ));
-echo $this->Form->input('calorie');
+//echo $this->Form->input('calorie');
+$regime = array('Leger' => 'Léger', 'Moyen' => 'Moyen', 'Gourmand' => 'Gourmand');
+echo $this->Form->input('regime', array(
+      'options' => $regime,
+      'empty' => '(choisissez)'
+));
 ?>
 <h2> Choix des ingrédients </h2>
 <div id="ajout_ingredient">
@@ -28,11 +33,7 @@ echo $this->Form->input('calorie');
 </div>
 <?php
 foreach($ingredients as $ingre => $key){
-	//print_r($ingre);
-  	//print_r($key);
   	echo $this->Form->input('IngredientPlat.'.$ingre.'', array('type' => 'checkbox', 'hiddenField' => false, 'label' =>$key["Ingredient"]["nom"], 'value' => $key["Ingredient"]["id"] ));
-  	//echo $this->Form->checkbox(array('value' => $key2["id"]));
-    //echo $key2["nom"];
 }
 ?>
 <div id="close_popup">

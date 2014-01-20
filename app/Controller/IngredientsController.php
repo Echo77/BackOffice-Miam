@@ -3,21 +3,25 @@
     public $helpers = array('Html', 'Form');
 
     public function index() {
-        $this->set('ingredients', $this->Ingredient->find('all'));
+        if(isset($_GET['order']) && $_GET['order'] == 'DESC')
+            $params = array('order' => 'Ingredient.nom DESC');
+        else 
+            $params = array('order' => 'Ingredient.nom');
+        $this->set('ingredients', $this->Ingredient->find('all', $params));
     }
 
     public function translate($text, $language){
-            $apiKey = 'AIzaSyBwcVX5llQAf3tkZllBoYK-jZ26ZI4y9bU';
-            $url = 'https://www.googleapis.com/language/translate/v2?key=' . $apiKey . '&q=' . rawurlencode($text) . '&source=fr&target='.$language.'';
-            $handle = curl_init($url);
-            curl_setopt($handle, CURLOPT_RETURNTRANSFER, true);
-            $response = curl_exec($handle);                 
-            $responseDecoded = json_decode($response, true);
-            curl_close($handle);
-            return $responseDecoded['data']['translations'][0]['translatedText'];
+        $apiKey = 'AIzaSyBwcVX5llQAf3tkZllBoYK-jZ26ZI4y9bU';
+        $url = 'https://www.googleapis.com/language/translate/v2?key=' . $apiKey . '&q=' . rawurlencode($text) . '&source=fr&target='.$language.'';
+        $handle = curl_init($url);
+        curl_setopt($handle, CURLOPT_RETURNTRANSFER, true);
+        $response = curl_exec($handle);                 
+        $responseDecoded = json_decode($response, true);
+        curl_close($handle);
+        return $responseDecoded['data']['translations'][0]['translatedText'];
     }
 
-	 public function add() {		 
+	public function add() {		 
 	 	$this->set('ingredients', $this->Ingredient->find('all')); // Initialise la variable ingredients à la requete find all
 		//$this->set('plats', $this->Menu->Plats->find('all'));
 	 	debug($this->request->data);
