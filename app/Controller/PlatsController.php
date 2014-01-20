@@ -31,6 +31,7 @@
         return $name;
     }
 
+
     public function translate($text, $language){
         $apiKey = 'AIzaSyBwcVX5llQAf3tkZllBoYK-jZ26ZI4y9bU';
         $url = 'https://www.googleapis.com/language/translate/v2?key=' . $apiKey . '&q=' . rawurlencode($text) . '&source=fr&target='.$language.'';
@@ -40,6 +41,19 @@
         $responseDecoded = json_decode($response, true);
         curl_close($handle);
         return $responseDecoded['data']['translations'][0]['translatedText'];
+    }
+
+
+    public function transfert() {
+        echo "Données transmises vers la tablette";
+        $plats = $this->Plat->find('all');
+        $ingredients = $this->Plat->Ingredient->find('all');
+        $ingredients_plats = $this->Plat->IngredientsPlat->find('all');
+        $menus_plats = $this->Plat->MenusPlat->find('all');
+        $menu = $this->Plat->Menu->find('all');
+        $tableau = array($plats, $ingredients, $ingredients_plats, $menus_plats, $menu);
+        json_encode($tableau);
+       // print_r($tableau);        
     }
 
 	public function add() {

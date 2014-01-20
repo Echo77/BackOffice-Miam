@@ -10,8 +10,17 @@
                 'foreignKey'             => 'plat_id',
                 'associationForeignKey'  => 'ingredient_id',
                 'with' => 'IngredientsPlat'
+            ),
+        'Menu' =>
+            array(
+                'className'              => 'Menu',
+                'joinTable'              => 'menus_plats',
+                'foreignKey'             => 'plat_id',
+                'associationForeignKey'  => 'menu_id',
+                'with' => 'MenusPlat'
             )
     );
+
     public $validate = array(
         'nom' => array(
             'rule' => 'notEmpty',
