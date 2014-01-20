@@ -38,7 +38,7 @@
                 array('gif', 'jpeg', 'png', 'jpg')
             ),
             'message' => 'Joindre une photo',
-            'allowEmpty' => true
+            'allowEmpty' => TRUE
         )
     );
 }

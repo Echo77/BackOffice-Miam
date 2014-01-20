@@ -1,17 +1,23 @@
 <div class="container">
-<h1>Plat Test</h1>
+<h1>Plats</h1>
 <table class="table table-striped">
+
+	<?php echo $this->Html->link(
+	    'Ajouter un Plat',
+	    array('controller' => 'plats', 'action' => 'add')
+	); ?>
 	<thead>
     <tr>
         <th>Id</th>
-        <th>Prix</th>
         <th>Nom</th>
+        <th>Image</th>
+        <th>Prix</th>
         <th>Calories</th>
         <th>Description</th>
         <th>Categories</th>
         <th>Horaire</th>
         <th>Saison</th>
-        <th>Image</th>
+        
         <th>Ingredient</th>
         <th>Modifier</th>
     </tr>

@@ -35,7 +35,7 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-          <a class="brand" href="/cakephp">Project name</a>
+          <a class="brand" href="/cakephp">Miam Back-Office</a>
           <div class="nav-collapse collapse">
             <ul class="nav">
               <li><?php echo $this->Html->link('Menu', array('controller' => 'menus', 'action' => 'index')); ?></li>

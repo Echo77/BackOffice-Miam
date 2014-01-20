@@ -25,7 +25,6 @@
 
         if ($this->request->is('post')) {
             $data = $this->request->data;
-        print_r($data);
             $result = array();
             /*
             * Upload Photo
@@ -39,28 +38,27 @@
                 }
             }
 
-                $this->Plat->create();
-                if(isset($this->request->data['IngredientPlat'])) // Verifie s'il y a des ingredients
+            $this->Plat->create();
+            if(isset($this->request->data['IngredientPlat'])) // Verifie s'il y a des ingredients
+            {
+                if ($this->Plat->save($result) ) 
                 {
-                    if ($this->Plat->save($result) ) 
-                    {
-                        $this->Session->setFlash(__('Votre plat a été sauvegardé.'));
+                    $this->Session->setFlash(__('Votre plat a été sauvegardé.'));
 
-                        $id_plat = $this->Plat->find('first', array('fields' => array('Plat.id'),'order' => array('Plat.id' => 'desc')));
+                    $id_plat = $this->Plat->find('first', array('fields' => array('Plat.id'),'order' => array('Plat.id' => 'desc')));
 
-                        foreach($this->request->data['IngredientPlat'] as $ingre){
-                            $data_id[]= array('ingredient_id'=> $ingre, 'plat_id'=>$id_plat['Plat']['id']);                    
-                        }
-                        $this->Plat->IngredientsPlat->saveMany($data_id);
-                       return $this->redirect(array('action' => 'index'));  
-                    } 
-                    $this->Session->setFlash(__('Impossible d\'ajouté un plat.')); 
-                }
-                else 
-                {               
+                    foreach($this->request->data['IngredientPlat'] as $ingre){
+                        $data_id[]= array('ingredient_id'=> $ingre, 'plat_id'=>$id_plat['Plat']['id']);                    
+                    }
+                    $this->Plat->IngredientsPlat->saveMany($data_id);
+                   return $this->redirect(array('action' => 'index'));  
+                } 
+                $this->Session->setFlash(__('Impossible d\'ajouté un plat.')); 
+            }
+            else 
+            {               
                 echo "Format de l'image incorrect ou le plat n'a pas d'ingredients";
-                }
-                
+            }   
         }
     }
     public function add_popup() {
@@ -81,27 +79,27 @@
                     $result[$key] = $value;
                 }
             }
-                $this->Plat->create();
-                if(isset($this->request->data['IngredientPlat'])) // Verifie s'il y a des ingredients
+            $this->Plat->create();
+            if(isset($this->request->data['IngredientPlat'])) // Verifie s'il y a des ingredients
+            {
+                if ($this->Plat->save($result)) 
                 {
-                    if ($this->Plat->save($result) ) 
-                    {
-                        $this->Session->setFlash(__('Votre plat a été sauvegardé.'));
+                    $this->Session->setFlash(__('Votre plat a été sauvegardé.'));
 
-                        $id_plat = $this->Plat->find('first', array('fields' => array('Plat.id'),'order' => array('Plat.id' => 'desc')));
+                    $id_plat = $this->Plat->find('first', array('fields' => array('Plat.id'),'order' => array('Plat.id' => 'desc')));
 
-                        foreach($this->request->data['IngredientPlat'] as $ingre){
-                            $data_id[]= array('ingredient_id'=> $ingre, 'plat_id'=>$id_plat['Plat']['id']);                    
-                        }
-                        $this->Plat->IngredientsPlat->saveMany($data_id);
-                       return $this->redirect(array('action' => 'index'));  
-                    } 
-                    $this->Session->setFlash(__('Impossible d\'ajouté un plat.')); 
-                }
-                else 
-                {               
-                    echo "Format de l'image incorrect ou le plat n'a pas d'ingredients";
-                }
+                    foreach($this->request->data['IngredientPlat'] as $ingre){
+                        $data_id[]= array('ingredient_id'=> $ingre, 'plat_id'=>$id_plat['Plat']['id']);                    
+                    }
+                    $this->Plat->IngredientsPlat->saveMany($data_id);
+                   return $this->redirect(array('action' => 'index'));  
+                } 
+                $this->Session->setFlash(__('Impossible d\'ajouté un plat.')); 
+            }
+            else 
+            {               
+                echo "Format de l'image incorrect ou le plat n'a pas d'ingredients";
+            }
         }
     }
     public function edit($id = null) {
@@ -127,7 +125,12 @@
             $result = array();
             foreach ($data['Plat'] as $key => $value) {
                 if ($key == 'photo') { 
-                    $result['Plat'][$key] = $this->upPhoto($value);
+                    if ($value['tmp_name']) {
+                        $result['Plat'][$key] = $this->upPhoto($value);
+                    } else {
+                        $result['Plat'][$key] = $plat['Plat']['photo'];
+                    }
+
                 }
                 else {
                     $result['Plat'][$key] = $value;
@@ -141,27 +144,23 @@
                 if ($this->Plat->save($result)) {
                     $this->Session->setFlash(__('Votre plat a été mis à jour.'));
                     $plat_id = $id;
-                    $this->Plat->IngredientsPlat->deleteAll(array('plat_id'=>$plat_id), true); 
+                    $this->Plat->IngredientsPlat->deleteAll(array('plat_id' => $plat_id), true); 
 
                     $plat_id = $id;
                 
-                    $this->Plat->IngredientsPlat->deleteAll(array('plat_id'=>$plat_id), true); 
-                    foreach($result['IngredientPlat'] as $ingre){
-                     $data_id[]= array('ingredient_id'=> $ingre, 'plat_id'=>$plat_id);
+                    $this->Plat->IngredientsPlat->deleteAll(array('plat_id' => $plat_id), true); 
+                    foreach($result['IngredientPlat'] as $ingre) {
+                        $data_id[]= array('ingredient_id' => $ingre, 'plat_id' => $plat_id);
                     }  
-                     $this->Plat->IngredientsPlat->saveMany($data_id);
-                     return $this->redirect(array('action' => 'index'));
-                    $this->Session->setFlash(__('Error !.')); 
+                    $this->Plat->IngredientsPlat->saveMany($data_id);
+                    return $this->redirect(array('action' => 'index'));
+                    $this->Session->setFlash(__('Error !'));
                 }
-            $this->Session->setFlash(__('Pas d\'ingredient pour votre plat.')); 
-          }
-          else
-          {
-            echo "Pas d'ingredients dans votre plat";
-          }
-            
+            $this->Session->setFlash(__('Impossible d\'enregistrer le plat.')); 
+            } else {
+                echo "Pas d'ingredients dans votre plat";
+            }
         }
-
         if (!$this->request->data) {
             $this->request->data = $plat;
         }
