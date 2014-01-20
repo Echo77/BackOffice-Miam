@@ -1,7 +1,6 @@
 <div class="container">
 <h1>Plats</h1>
 <table class="table table-striped">
-
 	<?php echo $this->Html->link(
 	    'Ajouter un Plat',
 	    array('controller' => 'plats', 'action' => 'add')
