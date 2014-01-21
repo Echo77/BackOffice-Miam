@@ -4,14 +4,16 @@
 
     public function index() {
         $params = array('order' => 'Plat.nom');
-        if(isset($_GET['ordernom']) && $_GET['ordernom'] == 'DESC') {
-            $params = array('ordernom' => 'Plat.nom DESC');
+        if(isset($_GET['ordercat']) && $_GET['ordercat'] == 'DESC') {
+            $params = array('order' => 'Plat.categorie DESC');
         }
         else {
-            $params = array('order' => 'Plat.nom', 'order' => 'Plat.nom');
-            if(isset($_GET['ordercat']) && $_GET['ordercat'] == 'DESC')
-                $params = array('order' => 'Plat.categorie DESC');
+            $params = array('order' => 'Plat.categorie');
+            if(isset($_GET['ordernom']) && $_GET['ordernom'] == 'DESC')
+                $params = array('order' => 'Plat.nom DESC');
             else
+                $params = array('order' => 'Plat.nom');
+            if(isset($_GET['ordercat']) && $_GET['ordercat'] == 'ASC')
                 $params = array('order' => 'Plat.categorie');
         }
         $this->set('plats', $this->Plat->find('all', $params));
@@ -166,7 +168,13 @@
         }
 
         $plat = $this->Plat->findById($id);
+
         $this->set('picture', $plat['Plat']['photo']);
+        $comp = array();
+        foreach ($plat['Ingredient'] as $key => $value) {
+            $comp[] = $value['id'];
+        }
+        $this->set('composants', $comp);
 
         if (!$plat) {
             throw new NotFoundException(__('Invalid plat'));

@@ -44,7 +44,7 @@
               <li><?php echo $this->Html->link('Commentaires', array('controller' => 'commentaires', 'action' => 'index')); ?></li>
               <li><?php echo $this->Html->link('MaJ des données', array('controller' => 'plats', 'action' => 'transfert'));?></li>
               <?php if(AuthComponent::user()):?> 
-              <li><?php echo $this->Html->link('Se deconnecter', array('controller' => 'users', 'action' => 'logout')); ?></li>
+              <li><?php echo $this->Html->link('Se déconnecter', array('controller' => 'users', 'action' => 'logout')); ?></li>
             <?php endif; ?>
             </ul>
           </div><!--/.nav-collapse -->

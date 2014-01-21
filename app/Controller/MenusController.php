@@ -3,7 +3,11 @@
     public $helpers = array('Html', 'Form');
 
     public function index() {
-        $this->set('menus', $this->Menu->find('all'));
+        if(isset($_GET['order']) && $_GET['order'] == 'DESC')
+            $params = array('order' => 'Menu.nom DESC');
+        else 
+            $params = array('order' => 'Menu.nom');
+        $this->set('menus', $this->Menu->find('all', $params));;
         $this->set('plats', $this->Menu->Plat->find('all'));
     }
 	public function add() 

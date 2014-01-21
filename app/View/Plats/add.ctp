@@ -47,7 +47,7 @@ echo $this->Form->input('regime', array(
 <?php
 foreach($ingredients as $ingre => $key){
 
-  	echo $this->Form->input('IngredientPlat.'.$ingre.'', array('type' => 'checkbox', 'hiddenField' => false, 'label' =>$key["Ingredient"]["nom"], 'value' => $key["Ingredient"]["id"] ));
+  	echo $this->Form->input('IngredientPlat.'.$ingre.'', array('type' => 'checkbox', 'hiddenField' => false, 'label' =>$key["Ingredient"]["nom"], 'value' => $key["Ingredient"]["id"]));
   	//echo $this->Form->checkbox(array('value' => $key2["id"]));
     //echo $key2["nom"];
 }

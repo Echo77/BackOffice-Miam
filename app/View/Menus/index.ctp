@@ -1,11 +1,29 @@
 <div class="container">
 <h1>Menus Test</h1>
+<?php echo $this->Html->link(
+    'Ajouter un Menu',
+    array('controller' => 'menus', 'action' => 'add')
+); ?>   
+<br>
+<br>
 <table class="table table-striped">
     <thead>
     <tr>
         <th>Id</th>
         <th>Prix</th>
-        <th>Nom</th>
+        <th>
+        <?php 
+            if(isset($_GET['order']) && $_GET['order'] == 'DESC')
+                echo $this->Html->link('Nom', '/menus', array(
+                    "controller" => "menus",
+                    "action" => "index"));
+            else 
+                echo $this->Html->link('Nom', '/menus?order=DESC', array(
+                    "controller" => "menus",
+                    "action" => "index",
+                    "?" => array("order" => "DESC")));
+        ?>
+        </th>
         <th>Description</th>
         <th>Plats</th>
         <th>Modifier</th>
@@ -55,4 +73,6 @@
     'Ajouter un Menu',
     array('controller' => 'menus', 'action' => 'add')
 ); ?>	
+<br>
+<br>
 </div>

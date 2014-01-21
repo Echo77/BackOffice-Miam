@@ -30,7 +30,7 @@
         <th>
         <?php 
             if(isset($_GET['ordercat']) && $_GET['ordercat'] == 'DESC')
-                echo $this->Html->link('Catégorie', '/plats', array(
+                echo $this->Html->link('Catégorie', '/plats?ordercat=ASC', array(
                     "controller" => "plats",
                     "action" => "index"));
             else 
