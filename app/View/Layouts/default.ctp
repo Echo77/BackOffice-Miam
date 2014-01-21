@@ -43,8 +43,7 @@ $cakeDescription = __d('cake_dev', 'Miam !');
 			<?php echo $this->element('header'); ?>
 		</div>
 		<div id="content">
-
-			<?php //echo $this->Session->flash(); ?>
+	
 
 			<?php echo $this->fetch('content'); ?>
 		</div>
@@ -52,7 +51,7 @@ $cakeDescription = __d('cake_dev', 'Miam !');
 			<?php echo $this->element('footer'); ?>
 		</div>
 	</div>
-<!--	<?php // echo $this->element('sql_dump'); ?> -->
+<?php echo $this->element('sql_dump'); ?>
 
 </body>
 </html>
