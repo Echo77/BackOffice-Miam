@@ -40,7 +40,6 @@
         echo "<td>".$key2["id"]."</td>";
         echo "<td>".$key2["nom"]."</th>";
         echo "<td>".$key2["pays"]."</td>";
-        echo "<td>".$key2["region"]."</td>";
         echo "<td>".$key2["description"]."</td>";
         //echo "<td>".$key2["regime"]."</td>";
          echo "<td>";

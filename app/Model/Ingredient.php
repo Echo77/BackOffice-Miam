@@ -21,18 +21,7 @@
             'length' => array(
                 'rule' => array('maxLength', 255),
                 'message' => "Le pays indiqué est trop long"
-                )   
-        ),
-        'region' => array(
-            'empty' => array(
-                'rule' => 'notEmpty',
-                'message' => "Une region d'ingredient est requise"
-                ),
-            'length' => array(
-                'rule' => array('maxLength', 255),
-                'message' => "La region indiquée est trop longue"
-                )
-            
+                )              
         ),
         'description' => array(
             'empty' => array(
