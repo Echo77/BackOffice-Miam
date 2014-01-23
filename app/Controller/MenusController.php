@@ -19,6 +19,7 @@
         $this->set('menus', $this->Menu->find('all'));
         $this->set('plats', $this->Menu->Plat->find('all'));
 
+
         //retourne tous les types de catégories
         $categories = $this->Menu->Plat->find('all', array('fields' => 'DISTINCT Plat.categorie'));
         $list_cat = array();
