@@ -14,16 +14,29 @@
     );
     	 public $validate = array(
         'nom' => array(
-            'rule' => 'notEmpty',
-            'message' => 'Un nom de menu est requis'
+            'empty' => array(
+                'rule' => 'notEmpty',
+                'message' => "Un nom d'ingredient est requis"
+                ),
+            'length' => array(
+                'rule' => array('maxLength', 255),
+                'message' => "Le nom indiqué est trop long"
+                )    
         ),
         'prix' => array(
-            'rule' => array('alphaNumeric', 'notEmpty'),
-            'message' => 'Un prix de menu est requis'
+            'rule' => array('numeric', 'notEmpty'),
+            'message' => "Un prix de menu est requis"
         ),
         'description' => array(
-            'rule' => 'notEmpty'
-        )
+            'empty' => array(
+                'rule' => 'notEmpty',
+                'message' => "Une description d'ingredient est requise"
+                ),
+            'length' => array(
+                'rule' => array('maxLength', 255),
+                'message' => "La description indiquée est trop longue"
+                )    
+        ),
     );
 }
     ?>

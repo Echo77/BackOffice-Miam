@@ -53,8 +53,8 @@
         $menu = $this->Plat->Menu->find('all');
         $tableau = array($plats, $ingredients, $ingredients_plats, $menus_plats, $menu);
         print_r(json_encode($tableau));
-       // print_r($tableau);        
-    }
+       // print_r($tableau);   
+       }     
 
 	public function add() {
 		 
@@ -233,5 +233,8 @@
         $this->Session->setFlash(__('Votre plat a été supprimé.'));
         return $this->redirect(array('action' => 'index'));
     }
+/*
+* GCM
+*/
 }
 ?>

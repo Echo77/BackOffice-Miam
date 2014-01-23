@@ -1,5 +1,9 @@
 <div class="container">
 <h1>Menus Test</h1>
+<?php echo $this->Html->link(
+    'Ajouter un Menu',
+    array('controller' => 'menus', 'action' => 'add')
+); ?>   
 <table class="table table-striped">
     <thead>
     <tr>

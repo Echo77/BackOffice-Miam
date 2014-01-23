@@ -23,30 +23,43 @@
 
     public $validate = array(
         'nom' => array(
-            'rule' => 'notEmpty',
-            'message' => 'Le nom du plat est requis'
+            'empty' => array(
+                'rule' => 'notEmpty',
+                'message' => "Un nom de plat est requis"
+                ),
+            'length' => array(
+                'rule' => array('maxLength', 255),
+                'message' => "Le nom indiqué est trop long"
+                )    
         ),
         'prix' => array(
-            'rule' => 'notEmpty',
-            'message' => 'Le prix du plat est requis'
+            'rule' => 'numeric',
+            'message' => "Le prix du plat est requis"
         ),
         'regime' => array(
             'rule' => 'notEmpty',
-            'message' => 'Le type de régime du plat est requis'
+            'message' => "Le type de régime du plat est requis"
         ),
         'categorie' => array(
             'rule' => 'notEmpty',
-            'message' => 'La catégorie du plat est requise'
+            'message' => "La catégorie du plat est requise"
         ),
         'description' => array(
-            'rule' => 'notEmpty'
+            'empty' => array(
+                'rule' => 'notEmpty',
+                'message' => "Une description de plat est requise"
+                ),
+            'length' => array(
+                'rule' => array('maxLength', 255),
+                'message' => "La description indiquée est trop longue"
+                )    
         ),
         'photo' => array(
             'rule' => array(
                 'extension',
                 array('gif', 'jpeg', 'png', 'jpg')
             ),
-            'message' => 'Joindre une photo',
+            'message' => "Joindre une photo",
             'allowEmpty' => TRUE
         )
     );

@@ -16,7 +16,7 @@
         $this->set('plats', $this->Menu->Plat->find('all'));
 
                 //$this->set('plats', $this->Plat->find('all'));
-        debug($this->request->data);
+        //debug($this->request->data);
         if ($this->request->is('post')) 
         {
 
