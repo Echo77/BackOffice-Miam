@@ -23,16 +23,20 @@ class UsersController extends AppController {
 
     public function login() {
     if ($this->request->is('post')) {
-       if($this->request->data['User']['username']=="admin" && $this->request->data['User']['password']=="admin")
-       {
-        if ($this->Auth->login($this->request->data)) {
-            return $this->redirect($this->Auth->redirect());
+        $data = $this->request->data['User'];
+
+        $params = array('conditions' => array('User.username' => $data['username']));
+        $rep = $this->User->find('all', $params);
+
+
+        if(isset($rep[0]['User']['password']) && $data['password'] == $rep[0]['User']['password'])
+        {
+            if ($this->Auth->login($this->request->data)) {
+                return $this->redirect($this->Auth->redirect());
+            }
         } else {
-            $this->Session->setFlash(__("Nom d'user ou mot de passe invalide, réessayer"));
+            echo '<p style="margin-left: 30px;">Nom d\'user ou mot de passe invalide, réessayer</p>';
         }
-        echo "Nom d'user ou mot de passe invalide, réessayer";
-       }
-        
     }
 }
 

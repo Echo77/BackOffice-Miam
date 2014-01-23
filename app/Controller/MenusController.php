@@ -19,8 +19,14 @@
         $this->set('menus', $this->Menu->find('all'));
         $this->set('plats', $this->Menu->Plat->find('all'));
 
-                //$this->set('plats', $this->Plat->find('all'));
-        debug($this->request->data);
+        //retourne tous les types de catégories
+        $categories = $this->Menu->Plat->find('all', array('fields' => 'DISTINCT Plat.categorie'));
+        $list_cat = array();
+        foreach ($categories as $key => $value) {
+            $list_cat[] = $value['Plat']['categorie'];
+        }
+        $this->set('categories', $list_cat);
+
         if ($this->request->is('post')) 
         {
 
@@ -49,6 +55,15 @@
     }
     public function edit($id = null) {
         $this->set('plats', $this->Menu->Plat->find('all'));
+
+        //retourne tous les types de catégories
+        $categories = $this->Menu->Plat->find('all', array('fields' => 'DISTINCT Plat.categorie'));
+        $list_cat = array();
+        foreach ($categories as $key => $value) {
+            $list_cat[] = $value['Plat']['categorie'];
+        }
+        $this->set('categories', $list_cat);
+
         if (!$id) {
             throw new NotFoundException(__('Invalid menu'));
         }
@@ -57,6 +72,12 @@
         if (!$menu) {
             throw new NotFoundException(__('Invalid menu'));
         }
+
+        $comp = array();
+        foreach ($menu['Plat'] as $key => $value) {
+            $comp[] = $value['id'];
+        }
+        $this->set('composants', $comp);
 
         if ($this->request->is(array('post', 'put'))) {
             $this->Menu->id = $id;

@@ -54,13 +54,23 @@ echo $this->Form->input('regime', array(
 
 	<?php echo $this->Html->link('Ajouter un ingredient', '#', array('onclick'=>"var openWin = window.open('".$this->Html->url(array('controller' => 'ingredients', 'action' => 'add_popup'))."', '_blank', 'toolbar=0,scrollbars=1,location=0,status=1,menubar=0,resizable=1,width=500,height=500');  return false;")); ?>
 </div>
+<div style="display: flex">
 <?php
-  foreach($ingredients as $ingre => $key) {
-    $tr = false;
-    if(in_array($key["Ingredient"]["id"], $composants))
-      $tr = true;
-    	echo $this->Form->input('IngredientPlat.'.$ingre.'', array('checked'=> $tr, 'type' => 'checkbox', 'hiddenField' => false, 'label' =>$key["Ingredient"]["nom"], 'value' => $key["Ingredient"]["id"] ));
-  }
-  echo $this->Form->button('Sauvegarder', array('type' => 'submit', 'class' =>'btn btn-default'));
-  echo $this->Form->end();
+    $width = floor(100 / (count($ingredients) / 5));
+    echo '<ul style="width: '.$width.'%;">';
+    $count = 0;
+    foreach($ingredients as $ingre => $key){
+      if($count++ == 5) {
+        $count = 1;
+        echo '</ul><ul style="width: '.$width.'%">';
+      }
+      $tr = false;
+      if(in_array($key["Ingredient"]["id"], $composants))
+        $tr = true;
+      echo '<p>'.$this->Form->input('IngredientPlat.'.$ingre.'', array('checked'=> $tr, 'type' => 'checkbox', 'hiddenField' => false, 'label' =>$key["Ingredient"]["nom"], 'value' => $key["Ingredient"]["id"] )).'</p>';
+    }
+
+    echo "</ul></div>";
+    echo $this->Form->button('Sauvegarder', array('type' => 'submit', 'class' =>'btn btn-default'));
+    echo $this->Form->end();
 ?>
