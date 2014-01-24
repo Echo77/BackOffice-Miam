@@ -3,11 +3,37 @@
     public $helpers = array('Html', 'Form');
 
     public function index() {
-        if(isset($_GET['order']) && $_GET['order'] == 'DESC')
+/*
+
+
+        $params = array('order' => 'Plat.nom');
+        if(isset($_GET['ordercat']) && $_GET['ordercat'] == 'DESC') {
+            $params = array('order' => 'Plat.categorie DESC');
+        }
+        else {
+            $params = array('order' => 'Plat.categorie');
+            if(isset($_GET['ordernom']) && $_GET['ordernom'] == 'DESC')
+                $params = array('order' => 'Plat.nom DESC');
+            else
+                $params = array('order' => 'Plat.nom');
+            if(isset($_GET['ordercat']) && $_GET['ordercat'] == 'ASC')
+                $params = array('order' => 'Plat.categorie');
+        }
+        $this->set('plats', $this->Plat->find('all', $params));
+
+
+        */
+        if(isset($_GET['ordername']) && $_GET['ordername'] == 'DESC')
             $params = array('order' => 'Menu.nom DESC');
-        else 
+        else if (isset($_GET['ordername']) && $_GET['ordername'] == 'ASC')
             $params = array('order' => 'Menu.nom');
-        $this->set('menus', $this->Menu->find('all', $params));;
+        else if(isset($_GET['orderhor']) && $_GET['orderhor'] == 'true') {
+            $params = array('order' => 'Menu.horaire');
+        } else {
+            $params = array('order' => 'Menu.nom');
+        }
+        $this->set('menus', $this->Menu->find('all', $params));
+
         $this->set('plats', $this->Menu->Plat->find('all'));
     }
 	public function add() 

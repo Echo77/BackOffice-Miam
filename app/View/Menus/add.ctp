@@ -7,6 +7,12 @@ echo $this->Form->create('Menu');
 echo $this->Form->input('nom');
 echo $this->Form->input('prix');
 echo $this->Form->input('description', array('rows' => '3'));
+
+$horaire = array('Midi' => 'Midi', 'Soiree' => 'Soirée');
+echo $this->Form->input('horaire', array(
+      'options' => $horaire,
+      'empty' => '(choisissez)'
+  ));
 ?>
 <h2> Choix des plats </h2>
 <div id="ajout_ingredient">
