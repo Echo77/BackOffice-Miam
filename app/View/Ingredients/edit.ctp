@@ -6,7 +6,7 @@
 	echo $this->Form->create('Ingredient', array('type' => 'file'));
 	echo $this->Form->input('nom');
 	echo $this->Form->input('pays');
-	echo $this->Form->input('description', array('rows' => '3'));
+	echo $this->Form->input('regime');
 
 /*supprimé pour le moment
 	$regime = array('Leger' => 'Léger', 'Moyen' => 'Moyen', 'Gourmand' => 'Gourmand');

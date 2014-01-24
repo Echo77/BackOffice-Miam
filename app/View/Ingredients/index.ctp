@@ -23,9 +23,8 @@
         ?>
         </th>
         <th>Pays</th>
-        <th>Région</th>
-        <th>Description</th>
-        <!--<th>Régime</th>-->
+        <!--<th>Région</th>-->
+        <th>Régime</th>
         <th>Modifier</th>
     </tr>
     
@@ -40,7 +39,7 @@
         echo "<td>".$key2["id"]."</td>";
         echo "<td>".$key2["nom"]."</th>";
         echo "<td>".$key2["pays"]."</td>";
-        echo "<td>".$key2["description"]."</td>";
+        echo "<td>".$key2["regime"]."</td>";
         //echo "<td>".$key2["regime"]."</td>";
          echo "<td>";
                 echo $this->Html->link('Modifier', array('controller' => 'ingredients', 'action' => 'edit', $key2["id"])); 
