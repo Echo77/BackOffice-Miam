@@ -27,6 +27,7 @@
         <th>Prix</th>
         <th>Régime</th>
         <th>Description</th>
+        <th>Recette </th>
         <th>
         <?php 
             if(isset($_GET['ordercat']) && $_GET['ordercat'] == 'DESC')
@@ -62,6 +63,7 @@
 			    echo "<td>".$plat["prix"]." €</td>";
 			    echo "<td>".$plat["regime"]."</td>";
 			    echo "<td>".$plat["description"]."</td>";
+                echo "<td>".$plat["recette"]."</td>";
 			    echo "<td>".$plat["categorie"]."</td>";
 			    echo "<td>".$plat["horaire"]."</td>";
 			    echo "<td>".$plat["saison"]."</td>";

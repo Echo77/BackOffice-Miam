@@ -7,6 +7,7 @@ echo $this->Form->create('Plat', array('enctype' => 'multipart/form-data'));
 echo $this->Form->input('Plat.nom');
 echo $this->Form->input('Plat.prix');
 echo $this->Form->input('Plat.description', array('rows' => '3'));
+echo $this->Form->input('Plat.recette', array('rows' => '3'));
 
 echo $this->Form->input('Plat.photo', array(
     'between' => '<br />',
