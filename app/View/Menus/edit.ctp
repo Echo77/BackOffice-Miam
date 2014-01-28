@@ -3,20 +3,19 @@
 <h1>Ajouter un menu</h1>
 
 <?php
-echo $this->Form->create('Menu');
-echo $this->Form->input('nom');
-echo $this->Form->input('prix');
-echo $this->Form->input('description', array('rows' => '3'));
+	echo $this->Form->create('Menu');
+	echo $this->Form->input('nom');
+	echo $this->Form->input('prix');
+	echo $this->Form->input('description', array('rows' => '3'));
 
-$horaire = array('Midi' => 'Midi', 'Soiree' => 'Soirée');
-echo $this->Form->input('horaire', array(
-      'options' => $horaire,
-      'empty' => '(choisissez)'
-  ));
+	$horaire = array('Midi' => 'Midi', 'Soiree' => 'Soirée');
+	echo $this->Form->input('horaire', array(
+	      'options' => $horaire,
+	      'empty' => '(choisissez)'
+	));
 ?>
 <h2> Choix des plats </h2>
 <div id="ajout_ingredient">
-	<?php //echo $this->element('add_ingredient', array(), array('cache' => true)); ?>
 	<?php echo $this->Html->link('Ajouter un plat', '#', array('onclick'=>"var openWin = window.open('".$this->Html->url(array('controller' => 'plats', 'action' => 'add_popup'))."', '_blank', 'toolbar=0,scrollbars=1,location=0,status=1,menubar=0,resizable=1,width=500,height=500');  return false;")); ?>
 </div>
 <br>

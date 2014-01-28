@@ -21,6 +21,27 @@
         return $responseDecoded['data']['translations'][0]['translatedText'];
     }
 
+    public function scripts() {
+        $ingre = $this->Ingredient->find('all');
+
+        foreach ($ingre as $key => $value) {
+            echo "<p>";
+            print_r($value);
+            echo "</p>";
+            $id = $value['Ingredient']['id'];
+            $nom = $value['Ingredient']['nom'];
+            
+            $this->Ingredient->id = $id;
+
+            $to_en = $this->translate($nom, "en");
+            $to_es = $this->translate($nom, "es");
+            $to_de = $this->translate($nom, "de");
+            $to_zh = $this->translate($nom, "zh-CN");
+            $data_translate[] = array('nom_en' => $to_en, 'nom_es' => $to_es, 'nom_zh' => $to_zh, 'nom_de' => $to_de, 'id'=> $id);
+            $this->Ingredient->savemany($data_translate);
+
+        }
+    }
 	public function add() {		 
 	 	$this->set('ingredients', $this->Ingredient->find('all')); // Initialise la variable ingredients à la requete find all
 		//$this->set('plats', $this->Menu->Plats->find('all'));

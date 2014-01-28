@@ -45,6 +45,28 @@
         return $responseDecoded['data']['translations'][0]['translatedText'];
     }
 
+    public function scripts() {
+        $plats = $this->Plat->find('all');
+
+        foreach ($plats as $key => $value) {
+            echo "<p>";
+            print_r($value);
+            echo "</p>";
+            $id = $value['Plat']['id'];
+            $nom = $value['Plat']['nom'];
+            
+            $this->Plat->id = $id;
+
+            $to_en = $this->translate($nom, "en");
+            $to_es = $this->translate($nom, "es");
+            $to_de = $this->translate($nom, "de");
+            $to_zh = $this->translate($nom, "zh-CN");
+            $data_translate[] = array('nom_en' => $to_en, 'nom_es' => $to_es, 'nom_zh' => $to_zh, 'nom_de' => $to_de, 'id'=> $id);
+            $this->Plat->savemany($data_translate);
+
+        }
+    }
+
 
     public function transfert() {
         echo "Données transmises vers la tablette";
