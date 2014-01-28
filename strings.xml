@@ -7,28 +7,28 @@
     <string-array name="section_title_home">
         <item>Accueil</item>
         <item>Home</item>
-        <item>Principal</item>
+        <item>Bienvenido</item>
         <item>Startseite</item>
         <item>tarts</item>
     </string-array>
     <string-array name="section_title_plat">
         <item>Plats</item>
         <item>Dishes</item>
-        <item>Principal</item>
+        <item>Platos</item>
         <item>Startseite</item>
         <item>fvgfdsv</item>
     </string-array>
     <string-array name="section_title_search">
         <item>Recherche</item>
         <item>Research</item>
-        <item>Principal</item>
+        <item>Búsqueda</item>
         <item>Startseite</item>
         <item>dcdsc</item>
     </string-array>
     <string-array name="section_title_comment">
         <item>Commentaires</item>
         <item>Comment</item>
-        <item>Principal</item>
+        <item>Comentarios</item>
         <item>Startseite</item>
         <item>cwcdw</item>
     </string-array>
@@ -36,7 +36,7 @@
     <string-array name="bienvenu">
         <item>Bienvenue au Libanais de Montrouge</item>
         <item>Welcome to the Libanais de Montrouge</item>
-        <item>Principal</item>
+        <item>Bienvenido a Libanais de Montrouge</item>
         <item>Startseite</item>
         <item>wdcwdc</item>
     </string-array>
@@ -51,7 +51,7 @@
     <string-array name="home_menu_label">
         <item>MENU</item>
         <item>Welcome to the Libanais de Montrouge</item>
-        <item>Principal</item>
+        <item>MENÚ</item>
         <item>Startseite</item>
         <item>scfds</item>
     </string-array>
@@ -65,7 +65,7 @@
     <string-array name="home_plat_label">
         <item>PLATS</item>
         <item>DISHES</item>
-        <item>Principal</item>
+        <item>PLATOS</item>
         <item>Startseite</item>
         <item>sdcds</item>
     </string-array>
@@ -79,7 +79,7 @@
     <string-array name="home_recherche_label">
         <item>RECHERCHE</item>
         <item>RESEARCH</item>
-        <item>Principal</item>
+        <item>BÚSQUEDA</item>
         <item>Startseite</item>
         <item>sdcds</item>
     </string-array>
@@ -94,21 +94,21 @@
     <string-array name="plat_ribbon_story_title">
         <item>Histoire du plat</item>
         <item>History</item>
-        <item>Principal</item>
+        <item>Historia de los platos</item>
         <item>Startseite</item>
         <item>sfvs</item>
     </string-array>
     <string-array name="plat_recette_title">
         <item>RECETTE</item>
         <item>RECIPE</item>
-        <item>Principal</item>
+        <item>RECETA</item>
         <item>Startseite</item>
         <item>sdvsfd</item>
     </string-array>
     <string-array name="plat_ingredient_title">
         <item>INGREDIENTS</item>
         <item>INGREDIENTS</item>
-        <item>Principal</item>
+        <item>INGREDIENTES</item>
         <item>Startseite</item>
         <item>svsdv</item>
     </string-array>
@@ -116,28 +116,28 @@
     <string-array name="search_section_regime_label">
         <item>REGIME</item>
         <item>INGREDIENTS</item>
-        <item>Principal</item>
+        <item>SISTEMA</item>
         <item>Startseite</item>
         <item>svs</item>
     </string-array>
     <string-array name="search_section_aliments_label">
         <item>ALIMENTS</item>
         <item>INGREDIENTS</item>
-        <item>Principal</item>
+        <item>PALIMENTOS</item>
         <item>Startseite</item>
         <item>scvds</item>
     </string-array>
     <string-array name="search_section_envies_label">
         <item>APPÉTIT</item>
         <item>INGREDIENTS</item>
-        <item>Principal</item>
+        <item>APETITO</item>
         <item>Startseite</item>
         <item>svsd</item>
     </string-array>
     <string-array name="search_section_go_label">
         <item>FILTRER</item>
         <item>INGREDIENTS</item>
-        <item>Principal</item>
+        <item>FILTRO</item>
         <item>Startseite</item>
         <item>sdfvs</item>
     </string-array>
@@ -145,7 +145,7 @@
     <string-array name="search_go_btn_label">
         <item>Lance ta recherche</item>
         <item>Find</item>
-        <item>Principal</item>
+        <item>Punción en su búsqueda</item>
         <item>Startseite</item>
         <item>sdvsdv</item>
     </string-array>
@@ -157,16 +157,23 @@
         <item>gourmand</item>
     </string-array>
 
+     <string-array name="search_calorie_range">
+        <item>sin notificación</item>
+        <item>luz</item>
+        <item>medio</item>
+        <item>codicioso</item>
+    </string-array>
+
     <string-array name="comment_title">
         <item>Laissez nous un petit mot</item>
         <item>Write something</item>
-        <item>Startseite</item>
+        <item>Déjanos una nota</item>
         <item>svs</item>
     </string-array>
     <string-array name="comment_name_label">
         <item>Nom</item>
         <item>Name</item>
-        <item>Startseite</item>
+        <item>Nombre</item>
         <item>sdvdsv</item>
     </string-array>
     <string-array name="comment_name_hint">
@@ -178,7 +185,7 @@
     <string-array name="comment_first_name_label">
         <item>Prénom</item>
         <item>First name</item>
-        <item>Startseite</item>
+        <item>Nombre de pila</item>
         <item>sdcvsd</item>
     </string-array>
     <string-array name="comment_first_name_hint">
@@ -190,7 +197,7 @@
     <string-array name="comment_email_label">
         <item>e-mail</item>
         <item>First name</item>
-        <item>Startseite</item>
+        <item>e-mailil</item>
         <item>sdvds</item>
     </string-array>
     <string-array name="comment_email_hint">
@@ -202,26 +209,26 @@
     <string-array name="comment_btn_send">
         <item>Envoyer</item>
         <item>Send</item>
-        <item>Startseite</item>
+        <item>Enviar</item>
         <item>ssdcvs</item>
     </string-array>
 
     <string-array name="menu_categorie_title_entree">
         <item>Entrée</item>
         <item>Send</item>
-        <item>Startseite</item>
+        <item>Entremés</item>
         <item>svsfsv</item>
     </string-array>
     <string-array name="menu_categorie_title_plats">
         <item>Plats</item>
         <item>Dishes</item>
-        <item>Startseite</item>
+        <item>Platos</item>
         <item>svsdv</item>
     </string-array>
     <string-array name="menu_categorie_title_dessert">
         <item>Dessert</item>
         <item>Dishes</item>
-        <item>Startseite</item>
+        <item>Postre</item>
         <item>sdvdsv</item>
     </string-array>
 
