@@ -12,5 +12,13 @@
     	$this->Session->setFlash(__('Commentaire supprimé.'));
     	return $this->redirect(array('action' => 'index'));
     }
+
+    public function add($data)
+    {
+    	$comment = json_decode($data);
+
+    	$donnes[]= array('texte'=> $texte, 'date'=>$date, 'consommateur'=>$consommateur, 'email' => $email);                    
+        $this->Commentaire->saveMany($donnes);
+    }
  }
 ?>
