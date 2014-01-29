@@ -1,0 +1,1 @@
+<?php echo "Données transmises vers la tablette </br>"; ?>

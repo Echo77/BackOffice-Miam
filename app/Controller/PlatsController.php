@@ -67,19 +67,6 @@
         }
     }
 
-
-    public function transfert() {
-        echo "Données transmises vers la tablette";
-        $plats = $this->Plat->find('all');
-        $ingredients = $this->Plat->Ingredient->find('all');
-        $ingredients_plats = $this->Plat->IngredientsPlat->find('all');
-        $menus_plats = $this->Plat->MenusPlat->find('all');
-        $menu = $this->Plat->Menu->find('all');
-        $tableau = array($plats, $ingredients, $ingredients_plats, $menus_plats, $menu);
-        print_r(json_encode($tableau));
-       // print_r($tableau);   
-       }     
-
 	public function add() {
 		 
 	 	$this->set('plats', $this->Plat->find('all'));
@@ -266,5 +253,48 @@
 /*
 * GCM
 */
+    public function sendNotification()
+    {   
+    // Obtention des données 
+    $apiKey=  "AIzaSyDL2I4zS_8H3zZrkpbMVUkwASyuMrBYhc4";
+    $registrationId = "APA91bGzGhuzeWRQR-_KBomB0dWgHZkmbbgMWbEJnGckUm0DV1Wdbl3XBp65V17Ux-VZwMswxUuZFDrtp4l6GIAWjZr1Bc0Q5yLKDNz-skcPdneA1QJJk3DRt1TMyZ6qbEOdaaTiz3sV_JYaXohEGl-vkFRbTF8NHg";
+    $registrationIdsArray =  array($registrationId);
+    $message = "Données requises";
+    $message_test =  array("message" => $message);
+
+    $headers = array("Content-Type:" . "application/json", "Authorization:" . "key=" . $apiKey);
+    $data = array(
+        'data' => $message_test,
+        'registration_ids' => $registrationIdsArray
+    );
+ 
+    $ch = curl_init();
+ 
+    curl_setopt( $ch, CURLOPT_HTTPHEADER, $headers ); 
+    curl_setopt( $ch, CURLOPT_URL, "https://android.googleapis.com/gcm/send" );
+    curl_setopt( $ch, CURLOPT_SSL_VERIFYHOST, 0 );
+    curl_setopt( $ch, CURLOPT_SSL_VERIFYPEER, 0 );
+    curl_setopt( $ch, CURLOPT_RETURNTRANSFER, true );
+    curl_setopt( $ch, CURLOPT_POSTFIELDS, json_encode($data) );
+ 
+    $response = curl_exec($ch);
+    curl_close($ch);
+ 
+    echo $response;
+    }
+
+    public function transfert() {
+        $plats = $this->Plat->find('all');
+        $ingredients = $this->Plat->Ingredient->find('all');
+        $ingredients_plats = $this->Plat->IngredientsPlat->find('all');
+        $menus_plats = $this->Plat->MenusPlat->find('all');
+        $menu = $this->Plat->Menu->find('all');
+        $tableau = array($plats, $ingredients, $ingredients_plats, $menus_plats, $menu);
+        print_r(json_encode($tableau));
+        // echo $this->sendNotification();
+
+       // print_r(json_encode($tableau));
+       // print_r($tableau);   
+       }     
 }
 ?>
