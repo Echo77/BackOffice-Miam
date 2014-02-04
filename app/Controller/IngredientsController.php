@@ -48,10 +48,14 @@
 	 	//debug($this->request->data);
         if ($this->request->is('post')) {
             $this->Ingredient->create();
-            if ($this->Ingredient->save($this->request->data)) {
-                $this->Session->setFlash(__('Votre ingredient a été sauvegardé.'));
 
+            $string = '';
+            foreach ($this->request->data['Ingredient']['regime'] as $key => $value) {
+            $string .= $value.'+';
             }
+            $regime = substr($string, 0, -1);
+
+
 
             $id_ingre = $this->Ingredient->find('first', array('fields' => array('Ingredient.id'),'order' => array('Ingredient.id' => 'desc')));
             $nom = $this->request->data['Ingredient']['nom'];
@@ -59,10 +63,10 @@
             $to_es = $this->translate($nom, "es");
             $to_de = $this->translate($nom, "de");
             $to_zh = $this->translate($nom, "zh-CN");
-            $data_translate[] = array('nom_en' => $to_en, 'nom_es' => $to_es, 'nom_zh' => $to_zh, 'nom_de' => $to_de, 'id'=> $id_ingre['Ingredient']['id']);
+            $data_translate[] = array('regime'=>$regime, 'nom_en' => $to_en, 'nom_es' => $to_es, 'nom_zh' => $to_zh, 'nom_de' => $to_de, 'id'=> $id_ingre['Ingredient']['id']);
             $this->Ingredient->savemany($data_translate);
             $this->Session->setFlash(__('Impossible d\'ajouté un ingredient.'));
-            return $this->redirect(array('action' => 'index'));
+           // return $this->redirect(array('action' => 'index'));
         }
     }
 

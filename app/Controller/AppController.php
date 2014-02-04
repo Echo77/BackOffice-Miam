@@ -44,6 +44,8 @@ class AppController extends Controller {
 
     public function beforeFilter() {
         $this->Auth->allow('plats', 'view');
+        $this->Auth->allow('plats', 'transfert');
+        $this->Auth->allow('commentaires', 'add');
     }
 	
 }
